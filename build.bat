@@ -1,1 +1,1 @@
-pyinstaller main.py --onefile --windowed --name "GD-nong-downloader"
+pyinstaller main.py --onefile --name "GD-nong-downloader"
