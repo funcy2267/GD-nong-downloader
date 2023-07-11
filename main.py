@@ -21,7 +21,7 @@ def downloadSong(song_link, song_id):
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
         }],
-        'outtmpl': gd_music+song_id+".mp3"
+        'outtmpl': gd_music+song_id
     }
     print("Downloading song...")
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -29,7 +29,7 @@ def downloadSong(song_link, song_id):
     print("Song downloaded.")
 
 def dlProcess():
-    song_link = input("Enter YouTube song link: ")
+    song_link = input("Enter song link: ")
     song_id = input("Enter song ID: ")
     downloadSong(song_link, song_id)
     if input("Do you want to download next song? [y/n] ") == "y":
