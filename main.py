@@ -4,7 +4,23 @@ import os
 from io import BytesIO
 from zipfile import ZipFile
 
-gd_music = '%localappdata%/GeometryDash/'
+def selectPath():
+    global gd_music
+    print("Select song location:")
+    path_names = ["Default", "Alternative", "Custom"]
+    paths = ['%localappdata%/GeometryDash/', '%programfiles(x86)%/Steam/steamapps/common/Geometry Dash/Resources', 'Select']
+    i=1
+    for path in path_names:
+        print(str(i)+". "+path+" ["+paths[i-1]+"]")
+        i+=1
+    answer = input("[1] ")
+    if answer in ["1", ""]:
+        gd_music = paths[0]
+    elif answer == "2":
+        gd_music = paths[1]
+    elif answer == "3":
+        gd_music = input("Custom path: ")
+    print("Selected path: "+gd_music)
 
 def downloadFfmpeg():
     print("Downloading...")
@@ -41,4 +57,5 @@ def checkFfmpeg():
             downloadFfmpeg()
 
 checkFfmpeg()
+selectPath()
 dlProcess()
